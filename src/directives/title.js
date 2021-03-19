@@ -1,3 +1,10 @@
+/**
+ * title显示样式
+ * @type 自定义指令title
+ * @package /src/directives/title
+ * @description 自定义显示HTML中默认的title显示
+ */
+
 // 在 el 元素的上方显示或隐藏一个内容为 title 的提示框
 function showTitle(el,  title) {
     const popover = getPopover()

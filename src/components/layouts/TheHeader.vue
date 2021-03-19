@@ -9,52 +9,77 @@
           <span class="icon-bar"></span>
         </button>
 
-        <a href="/" class="navbar-brand">
+        <router-link to="/" class="navbar-brand site-logo">
+          <img :src="logo.src" :alt="logo.title" />
           <span class="title">{{ logo.title }}</span>
-          <img :src="logo.src" :alt="logo.title">
-        </a>
+        </router-link>
       </div>
 
-      <div id="top-navbar-collapse" :class="['collapse', 'navbar-collapse', { in: showCollapsedNav }]">
+      <div
+        id="top-navbar-collapse"
+        :class="['collapse', 'navbar-collapse', { in: showCollapsedNav }]"
+      >
         <ul class="nav navbar-nav">
-          <li v-for="(item, index) in navList" :class="{ active: index === activeNavIndex }">
+          <li
+            v-for="(item, index) in navList"
+            :key="index"
+            :class="{ active: index === activeNavIndex }"
+          >
             <a href="#" @click="changeNavIndex(index)">{{ item }}</a>
           </li>
         </ul>
+        <!-- 入口组件 -->
+        <div class="navbar-right">
+          <the-entry />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import TheEntry from "@/components/layouts/TheEntry";
+
 export default {
-  name: 'TheHeader',
+  name: "TheHeader",
+  components: {
+    TheEntry,
+  },
   data() {
     return {
       logo: {
         src: `${this.uploadsUrl}`,
-        title: 'Learnku Vue.js'
+        title: "Vue.js",
       },
-      navList: ['社区', '头条', '问答', '教程'],
+      navList: ["社区", "头条", "问答", "教程"],
       activeNavIndex: 0,
-      showCollapsedNav: false
-    }
+      showCollapsedNav: false,
+    };
   },
   beforeCreate() {
-    this.uploadsUrl = 'https://cdn.learnku.com//uploads/communities/hIZjRRdF8oVYZy69XJnT.png'
+    this.uploadsUrl =
+      "https://cdn.learnku.com//uploads/communities/hIZjRRdF8oVYZy69XJnT.png";
   },
   methods: {
     changeNavIndex(index) {
-      this.activeNavIndex = index
+      this.activeNavIndex = index;
     },
     toggleNav() {
-      this.showCollapsedNav = !this.showCollapsedNav
-    }
-  }
-}
+      this.showCollapsedNav = !this.showCollapsedNav;
+    },
+  },
+};
 </script>
 
 <style scoped>
-.title { display: none;}
-.navbar-default .navbar-nav > .active > a { background: rgba(0,0,0,.03);}
+.site-logo {
+  display: flex;
+  color: #888888 !important;
+}
+.site-logo > span {
+  margin-left: 10px;
+}
+.navbar-default .navbar-nav > .active > a {
+  background: rgba(0, 0, 0, 0.03);
+}
 </style>

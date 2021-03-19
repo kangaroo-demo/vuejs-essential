@@ -1,18 +1,21 @@
 <template>
   <div id="wrap">
     <TheHeader/>
-    <the-footer></the-footer>
+    <div id="main-container" class="container main-container">
+      <router-view/>
+    </div>
+    <TheFooter/>
   </div>
 </template>
 
 <script>
-import TheHeader from '@/components/layouts/TheHeader.vue'
-import TheFooter from './components/layouts/TheFooter.vue'
+import TheHeader from "@/components/layouts/TheHeader.vue";
+import TheFooter from "./components/layouts/TheFooter.vue";
 
 export default {
-  name: 'App',
-  components: { TheHeader, TheFooter }
-}
+  name: "App",
+  components: { TheHeader, TheFooter },
+};
 </script>
 
 <style lang="scss">
