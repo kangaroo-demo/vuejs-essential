@@ -5,11 +5,13 @@ import router from './router'
 import './directives'
 // 引入自定义组件
 import './components'
+// 引入过滤器
+import './filters'  
 // 引入 store
 import store from './store'
 // 引入插件
 import VueSweetalert2 from './plugins/vue-sweetalert2'
-import Message from './plugins/message'  
+import Message from './plugins/message'
 
 // 使用插件
 Vue.use(VueSweetalert2)
