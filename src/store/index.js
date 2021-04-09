@@ -4,7 +4,7 @@ import ls from '../utils/localStorage'
 import router from '../router'
 // 引入 actions.js 的所有导出
 import * as moreActions from './actions'
-
+import * as moreGetters from './getters'
 Vue.use(Vuex)
 
 const state = {
@@ -16,8 +16,8 @@ const state = {
 
 // 添加 getters
 const getters = {
-    getArticleById: (state) => (id) => {
-        let articles = state.articles
+    getArticleById: (state, getters) => (id) => {
+        let articles = getters.computedArticles
 
         if (Array.isArray(articles)) {
             articles = articles.filter(article => +id === +article.articleId)
@@ -26,7 +26,7 @@ const getters = {
             return null
         }
     },
-
+    ...moreGetters
 }
 
 const mutations = {
