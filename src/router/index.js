@@ -23,6 +23,14 @@ const router = new Router({
     routes
 })
 
+const VueRouterPush = Router.prototype.push
+
+Router.prototype.push = function push (to) {
+
+      return VueRouterPush.call(this, to).catch(err => err)
+
+}
+
 // 全局前置守卫
 router.beforeEach((to, from, next) => {
   const app = router.app
