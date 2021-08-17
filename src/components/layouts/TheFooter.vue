@@ -79,7 +79,8 @@ export default {
   data() {
     return {
       direction: "left",
-      description: "Learnku Vue.js 是一个 Vue.js 的知识社区",
+      // description: "Learnku Vue.js 是一个 Vue.js 的知识社区",
+      description: "这是一个分支提交",
       contacts: [
         {
           icon: "envelope",
